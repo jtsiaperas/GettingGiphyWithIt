@@ -65,4 +65,5 @@ $("#makeButton").on("click", function(event) {
   {
      $("#buttons").append("<button class='btn search'>"+term+"</button>");
   }
+  $("#newButton").val("");
 });
