@@ -20,7 +20,7 @@ for(i=0;i<searchList.length;i++){
 }
 
 
-$(".search").on("click", function() {
+$(document).on("click",".search", function() {
       var term = $(this).text();
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         term + "&api_key=dc6zaTOxFJmzC";
@@ -58,3 +58,9 @@ $(".search").on("click", function() {
       });
 });
 
+$("#makeButton").on("click", function(event) {
+  event.preventDefault();
+  var term = $("#newButton").val();
+  $("#buttons").append("<button class='btn search'>"+term+"</button>");
+
+});
