@@ -1,0 +1,12 @@
+button {
+	border: 1px solid #b73131;
+	background-color: #f44242;
+    height: 60px;
+	line-height: 60px;
+	color: white;
+}
+
+body {
+
+	background-color: #0f3d25;
+}
