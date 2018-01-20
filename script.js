@@ -1,8 +1,21 @@
 
 var searchList =["infinite","possibilities","cosmic","mysteries","uncharted","depths","inky","blackness","radiant","beauty"];
 
+$(document).on("click","img", function(){
+    var state = $(this).attr("data-state");
+    if(state=="still")
+    { 
+        $(this).attr("data-state","animate");
+        $(this).attr("src",$(this).attr("data-animate"));
+    }
+    else
+    {
+          $(this).attr("data-state","still");
+          $(this).attr("src",$(this).attr("data-still"));
+    }
+  });
+
 for(i=0;i<searchList.length;i++){
-      console.log(searchList[i]);
       $("#buttons").append("<button class='btn search'>"+searchList[i]+"</button>");
 }
 
@@ -29,18 +42,19 @@ $(".search").on("click", function() {
             {
                 var gifDiv = $("<div class='jif'>");
                 var p = $("<p>").text("Rating: " + rating);
-
                 var image = $("<img>");
                 image.attr("src", results[i].images.fixed_height_still.url);
-                image.attr("data-still", results[i].images.fixed_height_still.url)
-                image.attr("")
+                image.attr("data-still", results[i].images.fixed_height_still.url);
+                image.attr("data-animate", results[i].images.fixed_height.url);
+                image.attr("data-state", "still");
                 gifDiv.prepend(p);
-                gifDiv.prepend(image);
+                gifDiv.append(image);
                 gifDiv.append("</div>");
             $("#jifs").prepend(gifDiv);
                total++;
             }
             i++;
           }
-        });
-    });
+      });
+});
+
