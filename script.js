@@ -40,8 +40,8 @@ $(".search").on("click", function() {
             
             if (rating !="r")
             {
-                var gifDiv = $("<div class='jif'>");
-                var p = $("<p>").text("Rating: " + rating);
+                var gifDiv = $("<div class='jif col-auto'>");
+                var p = $("<br><p>").text("Rating: " + rating);
                 var image = $("<img>");
                 image.attr("src", results[i].images.fixed_height_still.url);
                 image.attr("data-still", results[i].images.fixed_height_still.url);
