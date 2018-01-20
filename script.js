@@ -1,0 +1,46 @@
+
+var searchList =["infinite","possibilities","cosmic","mysteries","uncharted","depths","inky","blackness","radiant","beauty"];
+
+for(i=0;i<searchList.length;i++){
+      console.log(searchList[i]);
+      $("#buttons").append("<button class='btn search'>"+searchList[i]+"</button>");
+}
+
+
+$(".search").on("click", function() {
+      var term = $(this).text();
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        term + "&api_key=dc6zaTOxFJmzC";
+
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+        .then(function(response) {
+          var results = response.data;
+          var total = 0;
+          var i = 0;
+          
+
+          while(total < 10) {
+            var rating = results[i].rating;
+            
+            if (rating !="r")
+            {
+                var gifDiv = $("<div class='jif'>");
+                var p = $("<p>").text("Rating: " + rating);
+
+                var image = $("<img>");
+                image.attr("src", results[i].images.fixed_height_still.url);
+                image.attr("data-still", results[i].images.fixed_height_still.url)
+                image.attr("")
+                gifDiv.prepend(p);
+                gifDiv.prepend(image);
+                gifDiv.append("</div>");
+            $("#jifs").prepend(gifDiv);
+               total++;
+            }
+            i++;
+          }
+        });
+    });
