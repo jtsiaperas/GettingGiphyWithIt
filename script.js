@@ -61,6 +61,8 @@ $(document).on("click",".search", function() {
 $("#makeButton").on("click", function(event) {
   event.preventDefault();
   var term = $("#newButton").val();
-  $("#buttons").append("<button class='btn search'>"+term+"</button>");
-
+  if (term != "")
+  {
+     $("#buttons").append("<button class='btn search'>"+term+"</button>");
+  }
 });
